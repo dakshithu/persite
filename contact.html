@@ -29,8 +29,9 @@
             <h1>Contact Me</h1>
             <p class="hero-subtitle">Let's connect & build something amazing together!</p>
         </section>
-        <div class="contact-grid">
-            <section class="contact-info animate-on-scroll">
+        <div class="contact-grid" style="display: flex; gap: 40px; flex-wrap: wrap;">
+            <!-- Contact Info Column -->
+            <section class="contact-info animate-on-scroll" style="flex: 1 1 320px; min-width: 300px;">
                 <h3>How to Reach Me</h3>
                 <div class="contact-method">
                     <span class="contact-icon email-icon"></span>
@@ -53,23 +54,21 @@
                         <a href="https://dakshith.me" target="_blank">dakshith.me</a>
                     </div>
                 </div>
-                <div class="social-links">
+                <div class="social-links" style="margin:20px 0;">
                     <h4>Social</h4>
                     <div class="social-icons">
                         <a class="social-btn" href="https://github.com/dakshithu" target="_blank">GitHub</a>
                         <a class="social-btn" href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
-                        <!-- Add more socials if you want -->
                     </div>
                 </div>
-                <!-- Only this part is dynamic: -->
-                <section id="availability" style="margin-top:32px;">
-                    <h3>Availability</h3>
+                <div class="card" style="margin:18px 0 0 0; box-shadow:none;">
+                    <h3 style="margin-bottom:8px;">Availability</h3>
                     <div id="availability-status">Loading...</div>
                     <div id="availability-details"></div>
-                </section>
+                </div>
             </section>
-            <section>
-                <!-- Contact Form -->
+            <!-- Contact Form Column -->
+            <section style="flex: 1 1 320px; min-width: 300px;">
                 <form id="contactForm" class="contact-form animate-on-scroll" autocomplete="off">
                     <h3>Send a Message</h3>
                     <div class="form-group">
