@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Dakshith Ullapaneni | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap for layout only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <style>
+    /* Keep existing light styles; add only dark overrides via .dark-mode */
+    /* Small, neat portrait */
+    .about-portrait { width:120px; height:120px; object-fit:cover; }
+    /* Custom dark mode overrides (no Bootstrap theme system) */
+    body.dark-mode { background:#161524 !important; color:#ffd749 !important; }
+    body.dark-mode .navbar, body.dark-mode .card, body.dark-mode .table, body.dark-mode .list-group-item { background:#232234 !important; color:#ffd749 !important; }
+    body.dark-mode .nav-link, body.dark-mode .navbar-brand, body.dark-mode .text-secondary { color:#ffd749 !important; }
+    body.dark-mode .form-control { background:#191a23 !important; color:#ffd749 !important; border-color:#ffd749 !important; }
+    body.dark-mode .btn-primary, body.dark-mode .btn-dark { background:#ffd749 !important; color:#232234 !important; border-color:#ffd749 !important; }
+    body.dark-mode .btn-primary:hover, body.dark-mode .btn-dark:hover { background:#22d685 !important; color:#fff !important; border-color:#22d685 !important; }
+    body.dark-mode .progress { background:#444 !important; }
+    body.dark-mode .progress-bar { background:#ffd749 !important; }
+  </style>
 </head>
 <body>
-  <!-- Dark mode toggle (never overlaps menu) -->
+  <!-- Custom dark toggle (fixed, never overlaps menu) -->
   <button id="dark-mode-toggle" class="btn btn-dark position-fixed top-0 end-0 m-2 z-3" aria-label="Toggle dark mode">🌗</button>
 
-  <!-- Navbar -->
+  <!-- Navbar (no color forcing; let light remain, dark overrides apply via .dark-mode) -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
       <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#">
@@ -32,10 +47,10 @@
   </nav>
 
   <main class="container my-4">
-    <!-- About (with smaller, centered profile pic) -->
+    <!-- About -->
     <section id="about" class="row g-4 align-items-center mb-0">
       <div class="col-12 col-md-4 text-center">
-        <img src="profil.jpg" alt="Portrait" class="rounded-circle shadow-sm mx-auto d-block" style="width:120px;height:120px;object-fit:cover;">
+        <img src="profil.jpg" alt="Portrait" class="rounded-circle shadow-sm mx-auto d-block about-portrait">
       </div>
       <div class="col-12 col-md-8">
         <h1 class="fw-bold">Hello, I'm <span class="text-primary">Dakshith Ullapaneni</span></h1>
@@ -58,14 +73,12 @@
       </ul>
     </section>
 
-    <!-- Experience (now always visible) -->
+    <!-- Experience (wrapped in card so text is always visible) -->
     <section id="experience" class="mt-5">
       <h3 class="mb-3">Experience</h3>
       <div class="card p-3">
         <table class="table align-middle table-sm mb-0">
-          <thead>
-            <tr><th>Dates</th><th>Role</th></tr>
-          </thead>
+          <thead><tr><th>Dates</th><th>Role</th></tr></thead>
           <tbody>
             <tr><td>2024–Present</td><td>Outlier (Freelance)</td></tr>
           </tbody>
@@ -78,42 +91,30 @@
       <h3 class="mb-3">Skills</h3>
       <div class="row g-3">
         <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <span>Coding</span><span>90%</span>
-              </div>
-              <div class="progress mt-2"><div class="progress-bar" style="width: 90%"></div></div>
-            </div>
-          </div>
+          <div class="card h-100"><div class="card-body">
+            <div class="d-flex justify-content-between"><span>Coding</span><span>90%</span></div>
+            <div class="progress mt-2"><div class="progress-bar" style="width:90%"></div></div>
+          </div></div>
         </div>
         <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <span>Web Development</span><span>88%</span>
-              </div>
-              <div class="progress mt-2"><div class="progress-bar" style="width: 88%"></div></div>
-            </div>
-          </div>
+          <div class="card h-100"><div class="card-body">
+            <div class="d-flex justify-content-between"><span>Web Development</span><span>88%</span></div>
+            <div class="progress mt-2"><div class="progress-bar" style="width:88%"></div></div>
+          </div></div>
         </div>
         <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <span>AI & ML</span><span>82%</span>
-              </div>
-              <div class="progress mt-2"><div class="progress-bar" style="width: 82%"></div></div>
-            </div>
-          </div>
+          <div class="card h-100"><div class="card-body">
+            <div class="d-flex justify-content-between"><span>AI & ML</span><span>82%</span></div>
+            <div class="progress mt-2"><div class="progress-bar" style="width:82%"></div></div>
+          </div></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects: 2 per row on mobile, 3 desktop -->
+    <!-- Projects -->
     <section id="projects" class="mt-5">
       <h3 class="mb-3">Projects</h3>
-      <div id="project-list" class="row g-3"></div>
+      <div id="project-list" class="row g-3"><!-- Filled by app.js --></div>
     </section>
 
     <section class="mt-5">
@@ -131,21 +132,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="app.js"></script>
   <script>
-    // Unified dark mode toggle (all pages, no overlap, all colors Bootstrap default!)
+    // Custom dark mode: toggle body.dark-mode with localStorage 'darkMode'
     (function(){
-      const saved = localStorage.getItem('bsTheme') || 'light';
-      document.documentElement.setAttribute('data-bs-theme', saved);
+      const isOn = localStorage.getItem('darkMode') === 'on';
+      document.body.classList.toggle('dark-mode', isOn);
       const btn = document.getElementById('dark-mode-toggle');
       if (btn) {
         btn.addEventListener('click', () => {
-          const next = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-bs-theme', next);
-          localStorage.setItem('bsTheme', next);
+          const enabled = document.body.classList.toggle('dark-mode');
+          localStorage.setItem('darkMode', enabled ? 'on' : 'off');
         });
       }
       window.addEventListener('storage', (e) => {
-        if (e.key === 'bsTheme' && e.newValue) {
-          document.documentElement.setAttribute('data-bs-theme', e.newValue);
+        if (e.key === 'darkMode') {
+          document.body.classList.toggle('dark-mode', e.newValue === 'on');
         }
       });
     })();
