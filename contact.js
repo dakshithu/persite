@@ -18,9 +18,8 @@ window.addEventListener('storage', function() {
     applyDarkModeSetting();
 });
 
-// ========== ANIMATIONS ==========
+// ========== ANIMATIONS (OLD) ==========
 document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for scroll-triggered animations
     const observerOptions = {
         threshold: 0.2,
         rootMargin: '0px 0px -50px 0px'
@@ -36,32 +35,36 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.animate-on-scroll').forEach(section => observer.observe(section));
 });
 
-// ========== DYNAMIC ABOUT ===========
+// ========== ONLY AVAILABILITY IS DYNAMIC ===========
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/about.txt')
-        .then(r => r.ok ? r.text() : "Couldn't load about text")
-        .then(text => {
-            document.getElementById('hero-about').textContent = text.trim();
-        });
-});
-
-// ========== DYNAMIC AVAILABILITY ===========
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/availability.json')
-        .then(r => r.ok ? r.json() : null)
+    const statusElement = document.getElementById('availability-status');
+    const detailsElement = document.getElementById('availability-details');
+    const defaultAvailability = {
+        available: true,
+        time: "9 AM - 6 PM (GMT+4)",
+        responseTime: "Usually within 24 hours"
+    };
+    fetch('./data/availability.json')
+        .then(response => {
+            if (!response.ok) { throw new Error("not found"); }
+            return response.json();
+        })
         .then(data => {
-            if(data){
-                let availStatus = data.available
-                    ? `<span style="color:#22d685;font-weight:700;">Available for new projects</span>`
-                    : `<span style="color:#ff4757;font-weight:700;">Not available for new projects</span>`;
-                document.getElementById('availability-status').innerHTML = availStatus;
-                document.getElementById('availability-details').innerHTML = `
-                    <b>Best time to reach:</b> ${data.time}<br>
-                    <b>Response time:</b> ${data.responseTime ? data.responseTime : 'Usually within 24 hours'}`;
-            } else {
-                document.getElementById('availability-status').textContent = 'Unavailable';
-                document.getElementById('availability-details').textContent = '';
-            }
+            let availStatus = data.available
+                ? `<span style="color:#22d685;font-weight:700;">✅ Available for new projects</span>`
+                : `<span style="color:#ff4757;font-weight:700;">❌ Not available for new projects</span>`;
+            statusElement.innerHTML = availStatus;
+            detailsElement.innerHTML = `
+                <p><strong>Best time to reach:</strong> ${data.time}</p>
+                <p><strong>Response time:</strong> ${data.responseTime || 'Usually within 24 hours'}</p>
+            `;
+        })
+        .catch(error => {
+            statusElement.innerHTML = `<span style="color:#22d685;font-weight:700;">✅ Available for new projects</span>`;
+            detailsElement.innerHTML = `
+                <p><strong>Best time to reach:</strong> ${defaultAvailability.time}</p>
+                <p><strong>Response time:</strong> ${defaultAvailability.responseTime}</p>
+            `;
         });
 });
 
