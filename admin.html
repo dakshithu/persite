@@ -93,6 +93,45 @@
             border-radius: 6px;
             cursor: pointer;
         }
+        body.dark-mode {
+    background: #161524;
+    color: #ffd749;
+}
+body.dark-mode .login-card,
+body.dark-mode .admin-container,
+body.dark-mode .card {
+    background: #232234 !important;
+    color: #ffd749 !important;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.21);
+}
+body.dark-mode input, 
+body.dark-mode textarea {
+    background: #191a23 !important;
+    color: #ffd749 !important;
+    border-color: #ffd749 !important;
+}
+body.dark-mode .admin-btn, 
+body.dark-mode .project-btn, 
+body.dark-mode .logout-btn {
+    background: #ffd749 !important;
+    color: #222 !important;
+}
+body.dark-mode .admin-btn:hover, 
+body.dark-mode .project-btn:hover, 
+body.dark-mode .logout-btn:hover {
+    background: #22d685 !important;
+    color: #fff !important;
+}
+body.dark-mode .project-item {
+    background: #191a23 !important;
+    border-color: #ffd749 !important;
+    color: #e7e7fa !important;
+}
+body.dark-mode #repo-info {
+    background: #191a23 !important;
+    color: #ffd749 !important;
+}
+
     </style>
 </head>
 <body>
@@ -184,3 +223,4 @@
     <script src="admin.js"></script>
 </body>
 </html>
+
