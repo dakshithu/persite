@@ -6,6 +6,8 @@
     padding: 50px 28px;
     position: relative;
     overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 30px;
 }
 
 .contact-hero::before {
@@ -71,6 +73,7 @@
 
 .contact-method:nth-child(2).animate { animation-delay: 0.1s; }
 .contact-method:nth-child(3).animate { animation-delay: 0.2s; }
+.contact-method:nth-child(4).animate { animation-delay: 0.3s; }
 
 @keyframes fadeInUp {
     to {
@@ -211,6 +214,69 @@
     box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
 }
 
+/* Availability Section */
+.availability {
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.availability h4 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.availability-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 12px 16px;
+    background: rgba(34, 214, 133, 0.1);
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 5px var(--accent);
+}
+
+@keyframes pulse {
+    0% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.1);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+}
+
+.availability-details {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.availability-details p {
+    margin: 5px 0;
+}
+
 /* Form Styling */
 .contact-form {
     opacity: 0;
@@ -253,7 +319,6 @@
 @media (max-width: 600px) {
     .form-row {
         grid-template-columns: 1fr;
-        gap: 0;
     }
 }
 
@@ -303,11 +368,6 @@
     border-color: var(--highlight);
     box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
     transform: translateY(-2px);
-}
-
-.form-group input:focus + label,
-.form-group textarea:focus + label {
-    color: var(--highlight);
 }
 
 .form-group textarea {
@@ -406,87 +466,8 @@
     100% { transform: translateY(-50%) rotate(360deg); }
 }
 
-.availability {
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.availability.animate {
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-.availability-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 12px 20px;
-    background: rgba(34, 214, 133, 0.1);
-    border-radius: 25px;
-    border: 2px solid var(--accent);
-}
-
-.status-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 10px var(--accent);
-}
-
-@keyframes pulse {
-    0% { 
-        opacity: 1; 
-        transform: scale(1);
-        box-shadow: 0 0 10px var(--accent);
-    }
-    50% { 
-        opacity: 0.7; 
-        transform: scale(1.1);
-        box-shadow: 0 0 20px var(--accent);
-    }
-    100% { 
-        opacity: 1; 
-        transform: scale(1);
-        box-shadow: 0 0 10px var(--accent);
-    }
-}
-
-.available {
-    color: var(--accent);
-}
-
 /* Navigation active state */
 .site-header nav a.active {
     color: var(--accent);
     border-bottom: 2.5px solid var(--accent);
-}
-
-/* Floating particles animation */
-.contact-hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
-    animation: float 15s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
 }
