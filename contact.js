@@ -18,7 +18,7 @@ window.addEventListener('storage', function() {
     applyDarkModeSetting();
 });
 
-// ========== ANIMATIONS (OLD) ==========
+// ========== ANIMATIONS ==========
 document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         threshold: 0.2,
@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Simulate loading state
         submitBtn.classList.add('loading');
         submitBtn.textContent = 'Sending...';
         setTimeout(() => {
@@ -94,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1700);
     });
 
-    // Input animation touches
     form.querySelectorAll('input, textarea').forEach(input => {
         input.addEventListener('focus', function() {
             this.parentElement.style.transform = 'translateY(-2px)';
@@ -146,7 +144,6 @@ function shakeButton() {
     }, 500);
 }
 
-// Notification keyframes
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
