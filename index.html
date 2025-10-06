@@ -1,154 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <title>Dakshith Ullapaneni | Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Bootstrap 5 CSS CDN -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
-  <div class="container-fluid">
-    <span class="navbar-brand fw-bold d-flex align-items-center">
-      <img src="profil.jpg" width="32" height="32" class="rounded-circle me-2" alt="Dakshith Portrait">
-      Dakshith Ullapaneni
-    </span>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNavbar">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-C1dBEcW5IwtmPPEGQ4Q1Nj/mu9T3wL/kuNZQo5VnEl1K/Ur+d4wnr9Z5O9wVGH93" 
-    crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <title>Dakshith Ullapaneni | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <button id="dark-mode-toggle" 
-        class="btn btn-dark position-fixed top-0 end-0 m-2"
-        aria-label="Toggle dark mode">🌗</button>
+  <!-- Dark mode toggle (fixed, won’t overlap menu) -->
+  <button id="dark-mode-toggle" class="btn btn-dark position-fixed top-0 end-0 m-2" aria-label="Toggle dark mode">🌗</button>
 
-    <header class="site-header">
-        <div class="container flex space-between">
-            <div class="branding">
-                <img src="profil.jpg" alt="Dakshith Portrait" class="logo">
-                <span>Dakshith Ullapaneni</span>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#">
+        <img src="profil.jpg" width="32" height="32" class="rounded-circle" alt="Portrait">
+        <span class="text-nowrap">Dakshith Ullapaneni</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="mainNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="container my-4">
+    <!-- About -->
+    <section id="about" class="row g-4 align-items-center">
+      <div class="col-12 col-md-4 text-center">
+        <img src="profil.jpg" class="img-fluid rounded-4 shadow-sm" alt="Portrait">
+      </div>
+      <div class="col-12 col-md-8">
+        <h1 class="fw-bold">Hello, I'm <span class="text-primary">Dakshith Ullapaneni</span></h1>
+        <div id="age-highlight" class="mb-2 small text-secondary"></div>
+        <h2 class="h5 text-body-secondary mb-3">Python Expert | Web Developer | AI Engineer</h2>
+        <p id="about-text">Loading...</p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="mt-5">
+      <h3 class="mb-3">Education</h3>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="https://aspamiis.com/" target="_blank">ASPAM IIS</a>
+          <span class="badge text-bg-secondary">Expected 2031</span>
+        </li>
+        <li class="list-group-item"><a href="https://zerotomastery.io/" target="_blank">Zero to Mastery</a></li>
+        <li class="list-group-item"><a href="https://appbrewery.com" target="_blank">The App Brewery</a></li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="mt-5">
+      <h3 class="mb-3">Experience</h3>
+      <div class="table-responsive">
+        <table class="table table-striped align-middle">
+          <thead><tr><th>Dates</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>2024–Present</td><td>Outlier (Freelance)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="mt-5">
+      <h3 class="mb-3">Skills</h3>
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <span>Coding</span><span>90%</span>
+              </div>
+              <div class="progress mt-2" role="progressbar">
+                <div class="progress-bar" style="width: 90%"></div>
+              </div>
             </div>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+          </div>
         </div>
-    </header>
-
-    <main class="container animated-fadein">
-        <!-- About section: dynamic -->
-        <section id="about" class="card big-gap">
-            <div class="about-content">
-                <img src="profil.jpg" alt="Dakshith Portrait" class="profile-img">
-                <div>
-                    <h1>Hello, I'm <span class="highlight">Dakshith Ullapaneni</span></h1>
-                    <div id="age-highlight"></div>
-                    <h2 class="job-title">Python Expert | Web Developer | AI Engineer</h2>
-                    <p id="about-text">Loading...</p>
-                </div>
+        <div class="col-12 col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <span>Web Development</span><span>88%</span>
+              </div>
+              <div class="progress mt-2">
+                <div class="progress-bar" style="width: 88%"></div>
+              </div>
             </div>
-        </section>
-
-        <!-- Education/Experience are static -->
-        <section id="education" class="card animate-on-scroll">
-            <h3>Education</h3>
-            <ul class="edu-list">
-                <li><a href="https://aspamiis.com/" target="_blank">ASPAM IIS</a> <span class="graduation-info">(Expected graduation: 2031)</span></li>
-                <li><a href="https://zerotomastery.io/" target="_blank">Zero to Mastery</a></li>
-                <li><a href="https://appbrewery.com" target="_blank">The App Brewery</a></li>
-                <li><a href="https://brightchamps.com/" target="_blank">BrightCHAMPS</a></li>
-                <li>Byjus Future School (Formerly WhiteHatJr)</a></li>
-            </ul>
-        </section>
-
-        <section id="experience" class="card animate-on-scroll">
-            <h3>Experience</h3>
-            <table>
-                <tr>
-                    <th>Dates</th>
-                    <th>Role</th>
-                </tr>
-                <tr>
-                    <td>2024-Present</td>
-                    <td>Outlier (Freelance)</td>
-                </tr>
-            </table>
-        </section>
-
-        <!-- Skills: static, but dynamic possible -->
-        <section id="skills" class="card animate-on-scroll">
-            <h3>Skills</h3>
-            <div class="skills-list">
-                <div class="skill">
-                    <span>Coding</span>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar" style="width:0%" data-width="90"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span>Web Development</span>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar" style="width:0%" data-width="88"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <span>AI & ML</span>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar" style="width:0%" data-width="82"></div>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <span>AI & ML</span><span>82%</span>
+              </div>
+              <div class="progress mt-2">
+                <div class="progress-bar" style="width: 82%"></div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Projects: DYNAMIC -->
-        <section id="projects" class="card animate-on-scroll">
-            <h3>Projects</h3>
-            <div id="project-list" class="project-grid">
-                <!-- Filled by JS -->
-            </div>
-        </section>
+    <!-- Projects: 2 per row on mobile, 3 on lg -->
+    <section id="projects" class="mt-5">
+      <h3 class="mb-3">Projects</h3>
+      <div id="project-list" class="row g-3">
+        <!-- Filled by app.js as col-6 col-lg-4 cards -->
+      </div>
+    </section>
 
-        <section class="card animate-on-scroll">
-            <h3>Other Portfolios</h3>
-            <ul>
-                <li><a href="https://daki247.pythonanywhere.com" target="_blank">My 1st Portfolio</a></li>
-            </ul>
-        </section>
-    </main>
+    <section class="mt-5">
+      <h3 class="mb-3">Other Portfolios</h3>
+      <ul class="list-unstyled">
+        <li><a href="https://daki247.pythonanywhere.com" target="_blank">My 1st Portfolio</a></li>
+      </ul>
+    </section>
+  </main>
 
-    <footer>
-        &copy; 2025 Dakshith Ullapaneni. All rights reserved.
-    </footer>
-    <script src="app.js"></script>
-    <!-- Bootstrap 5 JS Bundle (for navbar) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-tf8LTRjchSP8nShxInFub9GQqkRjExQWfiZKgK4YdHppHv6kRrg+TfZE8W1G0eDg" 
-        crossorigin="anonymous"></script>
+  <footer class="border-top py-3 text-center small text-secondary">
+    &copy; 2025 Dakshith Ullapaneni. All rights reserved.
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Dark mode using Bootstrap theme
+    (function(){
+      const saved = localStorage.getItem('bsTheme') || 'light';
+      document.documentElement.setAttribute('data-bs-theme', saved);
+      document.getElementById('dark-mode-toggle')?.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-bs-theme', current);
+        localStorage.setItem('bsTheme', current);
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
