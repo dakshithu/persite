@@ -500,3 +500,13 @@ footer {
     display: block;
     text-shadow: none;
 }
+
+.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+}
