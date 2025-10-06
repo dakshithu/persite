@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact | Dakshith Ullapaneni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌗</button>
+    <header class="site-header">
+        <div class="container flex space-between">
+            <div class="branding">
+                <img src="profil.jpg" alt="Dakshith Portrait" class="logo">
+                <span>Dakshith Ullapaneni</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container animated-fadein">
+        <section class="contact-hero">
+            <h1>Contact Me</h1>
+            <p class="hero-subtitle" id="hero-about">Loading description...</p>
+        </section>
+
+        <section id="availability" class="card animate-on-scroll">
+            <h3>Availability</h3>
+            <div id="availability-status">Loading...</div>
+            <div id="availability-details"></div>
+        </section>
+
+        <div class="contact-grid">
+            <section class="contact-info animate-on-scroll">
+                <h3>How to Reach Me</h3>
+                <div class="contact-method">
+                    <span class="contact-icon email-icon"></span>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <a href="mailto:your@email.com">your@email.com</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <span class="contact-icon phone-icon"></span>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <a href="tel:+971555555555">+971 55 555 5555</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <span class="contact-icon web-icon"></span>
+                    <div class="contact-details">
+                        <h4>Website</h4>
+                        <a href="https://dakshith.me" target="_blank">dakshith.me</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h4>Social</h4>
+                    <div class="social-icons">
+                        <a class="social-btn" href="https://github.com/dakshithu" target="_blank">GitHub</a>
+                        <a class="social-btn" href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
+                        <!-- Add more socials if you want -->
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <form id="contactForm" class="contact-form animate-on-scroll" autocomplete="off">
+                    <h3>Send a Message</h3>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Dakshith Ullapaneni. All rights reserved.
+    </footer>
+    <script src="contact.js"></script>
+</body>
+</html>
