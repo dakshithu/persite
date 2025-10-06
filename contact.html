@@ -24,19 +24,11 @@
             </nav>
         </div>
     </header>
-
     <main class="container animated-fadein">
         <section class="contact-hero">
             <h1>Contact Me</h1>
-            <p class="hero-subtitle" id="hero-about">Loading description...</p>
+            <p class="hero-subtitle">Let's connect & build something amazing together!</p>
         </section>
-
-        <section id="availability" class="card animate-on-scroll">
-            <h3>Availability</h3>
-            <div id="availability-status">Loading...</div>
-            <div id="availability-details"></div>
-        </section>
-
         <div class="contact-grid">
             <section class="contact-info animate-on-scroll">
                 <h3>How to Reach Me</h3>
@@ -69,9 +61,15 @@
                         <!-- Add more socials if you want -->
                     </div>
                 </div>
+                <!-- Only this part is dynamic: -->
+                <section id="availability" style="margin-top:32px;">
+                    <h3>Availability</h3>
+                    <div id="availability-status">Loading...</div>
+                    <div id="availability-details"></div>
+                </section>
             </section>
-
             <section>
+                <!-- Contact Form -->
                 <form id="contactForm" class="contact-form animate-on-scroll" autocomplete="off">
                     <h3>Send a Message</h3>
                     <div class="form-group">
@@ -91,7 +89,6 @@
             </section>
         </div>
     </main>
-
     <footer>
         &copy; 2025 Dakshith Ullapaneni. All rights reserved.
     </footer>
