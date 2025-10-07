@@ -8,14 +8,15 @@
   <style>
     body { background:#161524; color: #ffd749; }
     .navbar { background:#232234; }
-    .card { background:#232234; color:#ffd749; margin-bottom:24px; }
+    .card { background:#232234; color:#ffd749; margin-bottom:24px; border:0;}
     .form-control, .form-select { background:#191a23; color:#ffd749; border-color:#ffd749; }
     .form-control:focus { border-color:#22d685; box-shadow:none; }
     .btn-primary, .btn-dark { background:#ffd749; color:#232234; border-color:#ffd749; }
     .btn-primary:hover, .btn-dark:hover { background:#22d685; color:#fff; border-color:#22d685; }
     .table { background:#232234; color:#ffd749; }
     .table th, .table td { color:#ffd749; border-color:#3a3952;}
-    #github-stats { margin-top:1rem;}
+    #github-stats img { background: #fff; }
+    textarea.form-control { min-height: 100px; }
   </style>
 </head>
 <body>
@@ -29,19 +30,40 @@
   <div class="container my-4">
     <div class="row gy-4">
 
+      <!-- About -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>About</h3>
+            <form id="admin-about">
+              <textarea class="form-control mb-2" id="about-textarea"></textarea>
+              <button class="btn btn-primary mt-2" id="save-about" type="button">Save About to GitHub</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Contact Info -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
             <h3>Contact Info</h3>
             <form id="admin-contact"></form>
-            <div>
-              <button class="btn btn-primary mt-2" id="save-contact" type="button">Save Contact Info to GitHub</button>
-            </div>
+            <button class="btn btn-primary mt-2" id="save-contact" type="button">Save Contact Info to GitHub</button>
             <div id="github-stats" class="mt-3"></div>
           </div>
         </div>
       </div>
-
+      <!-- Experience -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Experience</h3>
+            <form id="admin-experience"></form>
+            <button class="btn btn-primary mt-2" id="save-experience" type="button">Save Experience to GitHub</button>
+          </div>
+        </div>
+      </div>
+      <!-- Education -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -51,13 +73,29 @@
           </div>
         </div>
       </div>
-
+      <!-- Availability -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h3>Experience</h3>
-            <form id="admin-experience"></form>
-            <button class="btn btn-primary mt-2" id="save-experience" type="button">Save Experience to GitHub</button>
+            <h3>Availability</h3>
+            <form id="admin-availability">
+              <div class="mb-2">
+                <label class="form-label">Available for new projects?</label>
+                <select class="form-select" id="availability-status">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Best time to reach</label>
+                <input type="text" class="form-control" id="availability-time">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Response time</label>
+                <input type="text" class="form-control" id="availability-responsetime">
+              </div>
+              <button class="btn btn-primary mt-2" id="save-availability" type="button">Save Availability to GitHub</button>
+            </form>
           </div>
         </div>
       </div>
