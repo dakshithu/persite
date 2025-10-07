@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel | Dakshith Ullapaneni</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { background: #f5f6ff; }
-    .admin-container { max-width: 900px; margin: 32px auto; }
-    .card { margin-bottom: 24px; }
-    .table { background: #fff; }
-  </style>
+  <link href="admin.css" rel="stylesheet"><!-- your original styles -->
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
@@ -20,65 +15,61 @@
       </a>
     </div>
   </nav>
-  <div class="admin-container">
+  <div class="container my-4">
 
-    <!-- Feedback -->
-    <div id="admin-messages" class="mb-3"></div>
+    <div class="row gy-4">
 
-    <!-- Availability Edit -->
-    <div class="card">
-      <div class="card-body">
-        <h3 class="h5 mb-3">Availability</h3>
-        <form id="availability-form">
-          <div class="mb-2"><label><input type="checkbox" id="is-available"> Available for new projects</label></div>
-          <div class="mb-2"><input type="text" class="form-control" id="availability-time" placeholder="Best time to reach"></div>
-          <div class="mb-2"><input type="text" class="form-control" id="response-time" placeholder="Response time"></div>
-          <button class="btn btn-primary" type="submit">Save</button>
-        </form>
+      <!-- Contact Info (new section) -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Contact Info</h3>
+            <form id="admin-contact"></form>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Contact Info Edit -->
-    <div class="card">
-      <div class="card-body">
-        <h3 class="h5 mb-3">Contact Information</h3>
-        <form id="contact-form" autocomplete="off">
-          <div class="mb-2"><input type="email" class="form-control" id="contact-email" placeholder="Email"></div>
-          <div class="mb-2"><input type="tel" class="form-control" id="contact-phone" placeholder="Phone"></div>
-          <div class="mb-2"><input type="url" class="form-control" id="contact-linkedin" placeholder="LinkedIn URL"></div>
-          <div class="mb-2"><input type="url" class="form-control" id="contact-github" placeholder="GitHub URL"></div>
-          <button class="btn btn-primary" type="submit">Save</button>
-        </form>
+      <!-- Education -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Education</h3>
+            <form id="admin-education"></form>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Education Edit -->
-    <div class="card">
-      <div class="card-body">
-        <h3 class="h5 mb-3">Education</h3>
-        <form id="education-form"></form>
-        <button id="add-education" class="btn btn-secondary mt-3">Add New Entry</button>
+      <!-- Experience (new section) -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Experience</h3>
+            <form id="admin-experience"></form>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Experience Edit (always visible!) -->
-    <div class="card">
-      <div class="card-body">
-        <h3 class="h5 mb-3">Experience</h3>
-        <form id="experience-form"></form>
-        <button id="add-experience" class="btn btn-secondary mt-3">Add New Entry</button>
+      <!-- Projects -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Projects</h3>
+            <form id="admin-projects"></form>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Projects Edit -->
-    <div class="card">
-      <div class="card-body">
-        <h3 class="h5 mb-3">Projects</h3>
-        <form id="projects-form"></form>
-        <button id="add-project" class="btn btn-secondary mt-3">Add New Project</button>
+      <!-- Availability -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h3>Availability</h3>
+            <form id="admin-availability"></form>
+          </div>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
   <script src="admin.js"></script>
 </body>
