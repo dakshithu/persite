@@ -1,11 +1,11 @@
 async function fetchText(url) {
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
+  if (!res.ok) throw new Error('Failed to load ' + url);
   return res.text();
 }
 async function fetchJSON(url) {
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
+  if (!res.ok) throw new Error('Failed to load ' + url);
   try { return await res.json(); } catch { return JSON.parse(await res.text()); }
 }
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Projects
+// Projects (grid)
 function renderProjects(projects) {
   const grid = document.getElementById('project-list');
   if (!grid) return;
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   catch { document.getElementById('project-list').innerHTML = '<div class="col-12 text-center">Projects data unavailable.</div>'; }
 });
 
-// Availability (in case index.html ever wants to show it)
+// Availability (if you need it anywhere on index.html)
 document.addEventListener('DOMContentLoaded', async () => {
   const statusEl = document.getElementById('availability-status');
   const detailsEl = document.getElementById('availability-details');
