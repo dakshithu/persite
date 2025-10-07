@@ -1,226 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Panel | Dakshith Ullapaneni</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f6ff;
-        }
-        .login-card, .admin-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .admin-btn, .project-btn, .logout-btn {
-            background: #22d685;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-right: 10px;
-        }
-        .admin-btn:hover, .project-btn:hover, .logout-btn:hover {
-            background: #0066ff;
-        }
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-        .success-message {
-            color: green;
-            margin-top: 10px;
-        }
-        .project-item {
-            background: #f9f9f9;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .project-actions button {
-            margin-left: 5px;
-            padding: 5px 10px;
-            font-size: 12px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        #dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        body.dark-mode {
-    background: #161524;
-    color: #ffd749;
-}
-body.dark-mode .login-card,
-body.dark-mode .admin-container,
-body.dark-mode .card {
-    background: #232234 !important;
-    color: #ffd749 !important;
-    box-shadow: 0 2px 18px rgba(0,0,0,0.21);
-}
-body.dark-mode input, 
-body.dark-mode textarea {
-    background: #191a23 !important;
-    color: #ffd749 !important;
-    border-color: #ffd749 !important;
-}
-body.dark-mode .admin-btn, 
-body.dark-mode .project-btn, 
-body.dark-mode .logout-btn {
-    background: #ffd749 !important;
-    color: #222 !important;
-}
-body.dark-mode .admin-btn:hover, 
-body.dark-mode .project-btn:hover, 
-body.dark-mode .logout-btn:hover {
-    background: #22d685 !important;
-    color: #fff !important;
-}
-body.dark-mode .project-item {
-    background: #191a23 !important;
-    border-color: #ffd749 !important;
-    color: #e7e7fa !important;
-}
-body.dark-mode #repo-info {
-    background: #191a23 !important;
-    color: #ffd749 !important;
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <title>Admin Panel | Dakshith Ullapaneni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f5f6ff; }
+    .admin-container { max-width: 900px; margin: 32px auto; }
+    .card { margin-bottom: 24px; }
+  </style>
 </head>
 <body>
-    <button id="dark-mode-toggle">🌗</button>
-    
-    <!-- LOGIN SECTION -->
-    <div id="login-section" class="login-card">
-        <h1>Admin Login</h1>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="github-token">GitHub Token</label>
-                <input type="password" id="github-token" required>
-            </div>
-            <div class="form-group">
-                <label for="repo-name">Repository (username/repo-name)</label>
-                <input type="text" id="repo-name" required>
-            </div>
-            <button type="submit" class="admin-btn">Login</button>
-            <div id="login-error" class="error-message"></div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#">
+        Dakshith Ullapaneni Admin
+      </a>
+    </div>
+  </nav>
+  <div class="admin-container">
+
+    <div id="admin-messages" class="mb-3"></div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="h5 mb-3">Availability</h3>
+        <form id="availability-form">
+          <div class="mb-2"><label>Available for new projects <input type="checkbox" id="is-available"></label></div>
+          <div class="mb-2">
+            <input type="text" class="form-control" id="availability-time" placeholder="Best time to reach">
+          </div>
+          <div class="mb-2">
+            <input type="text" class="form-control" id="response-time" placeholder="Response time">
+          </div>
+          <button class="btn btn-primary" type="submit">Save</button>
         </form>
+      </div>
     </div>
 
-    <!-- ADMIN SECTION -->
-    <div id="admin-section" class="admin-container" style="display:none;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h1>Admin Panel</h1>
-            <button id="logout-btn" class="logout-btn">Logout</button>
-        </div>
-        <div id="repo-info" style="background: #e8f5e8; padding: 10px; border-radius: 6px; margin-bottom: 20px;"></div>
-
-        <!-- AVAILABILITY SECTION -->
-        <div class="card">
-            <h2>📅 Edit Availability</h2>
-            <form id="availability-form">
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="is-available"> Available for new projects
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="availability-time">Best time to reach:</label>
-                    <input type="text" id="availability-time" placeholder="9 AM - 6 PM (GMT+4)">
-                </div>
-                <div class="form-group">
-                    <label for="response-time">Response time:</label>
-                    <input type="text" id="response-time" placeholder="Usually within 24 hours">
-                </div>
-                <button type="submit" class="admin-btn">Save Availability</button>
-                <div id="availability-message"></div>
-            </form>
-        </div>
-
-        <!-- ABOUT SECTION -->
-        <div class="card">
-            <h2>✏️ Edit About Description</h2>
-            <form id="about-form">
-                <div class="form-group">
-                    <label for="about-textarea">About Description:</label>
-                    <textarea id="about-textarea" rows="5" placeholder="Write about yourself..."></textarea>
-                </div>
-                <button type="submit" class="admin-btn">Save About</button>
-                <div id="about-message"></div>
-            </form>
-        </div>
-
-        <!-- PROJECTS SECTION -->
-        <div class="card">
-            <h2>🚀 Manage Projects</h2>
-            <div id="projects-container">
-                <ul id="projects-list" style="list-style: none; padding: 0;"></ul>
-            </div>
-            <hr>
-            <h3>Add New Project</h3>
-            <form id="add-project-form">
-                <div class="form-group">
-                    <label for="project-title">Project Title:</label>
-                    <input type="text" id="project-title" required>
-                </div>
-                <div class="form-group">
-                    <label for="project-url">Project URL:</label>
-                    <input type="text" id="project-url" placeholder="https://..." required>
-                </div>
-                <button type="submit" class="project-btn">Add Project</button>
-                <div id="projects-message"></div>
-            </form>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="h5 mb-3">Contact Information</h3>
+        <form id="contact-form"></form>
+      </div>
     </div>
 
-    <script src="admin.js"></script>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="h5 mb-3">Education</h3>
+        <form id="education-form"></form>
+        <button id="add-education" class="btn btn-secondary mt-3">Add New Entry</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="h5 mb-3">Experience</h3>
+        <form id="experience-form"></form>
+        <button id="add-experience" class="btn btn-secondary mt-3">Add New Entry</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="h5 mb-3">Projects</h3>
+        <form id="projects-form"></form>
+        <button id="add-project" class="btn btn-secondary mt-3">Add New Project</button>
+      </div>
+    </div>
+
+  </div>
+  <script src="admin.js"></script>
 </body>
 </html>
-
