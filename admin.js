@@ -1,5 +1,5 @@
 // ---- Setup: CHANGE THESE ----
-const GITHUB_REPO = 'yourusername/yourrepo'; // Example: 'daki247/portfolio'
+const GITHUB_REPO = 'dakshithu/persite'; // Example: 'daki247/portfolio'
 const BRANCH = 'main';
 
 // ---- Utility ----
@@ -8,11 +8,16 @@ async function fetchJSON(url) {
   if (!res.ok) throw new Error(`Failed to load ${url}`);
   return await res.json();
 }
+async function fetchText(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to load ' + url);
+  return await res.text();
+}
 function b64(str) {
   return btoa(unescape(encodeURIComponent(str)));
 }
 
-// ---- GitHub API save function ----
+// ---- GitHub API save ----
 async function githubSave(path, data, message, token, repo=GITHUB_REPO, branch=BRANCH) {
   const fileUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
   const headers = { Authorization:`token ${token}`, 'Content-Type':'application/json' };
@@ -32,6 +37,24 @@ async function githubSave(path, data, message, token, repo=GITHUB_REPO, branch=B
   if (!putResp.ok) throw new Error('Failed to update file');
   return await putResp.json();
 }
+
+// ---- About ----
+let aboutText = '';
+async function renderAbout() {
+  aboutText = await fetchText('data/about.txt');
+  document.getElementById('about-textarea').value = aboutText;
+}
+document.getElementById('save-about').onclick = async () => {
+  const token = prompt("GitHub Personal Access Token:");
+  aboutText = document.getElementById('about-textarea').value;
+  await githubSave(
+    'data/about.txt',
+    aboutText,
+    "Update about.txt from admin",
+    token
+  );
+  alert('About text saved!');
+};
 
 // ---- Contact Info ----
 let contactData;
@@ -91,6 +114,7 @@ document.getElementById('save-contact').onclick = async () => {
   contactData.phone = document.getElementById('contact-phone').value;
   contactData.linkedin = document.getElementById('contact-linkedin').value;
   contactData.github = document.getElementById('contact-github').value;
+  // Optionally update github username if needed
   const token = prompt("GitHub Personal Access Token:");
   await githubSave(
     'data/contact.json',
@@ -127,7 +151,6 @@ async function renderEducation() {
     };
     form.appendChild(row);
   });
-  // Add option
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
@@ -171,7 +194,6 @@ async function renderExperience() {
     };
     form.appendChild(row);
   });
-  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
@@ -190,9 +212,33 @@ document.getElementById('save-experience').onclick = async () => {
   alert('Experience saved!');
 };
 
+// ---- Availability ----
+let availabilityData;
+async function renderAvailability() {
+  availabilityData = await fetchJSON('data/availability.json');
+  document.getElementById('availability-status').value = !!availabilityData.available ? "true" : "false";
+  document.getElementById('availability-time').value = availabilityData.time || '';
+  document.getElementById('availability-responsetime').value = availabilityData.responseTime || '';
+}
+document.getElementById('save-availability').onclick = async () => {
+  availabilityData.available = document.getElementById('availability-status').value === "true";
+  availabilityData.time = document.getElementById('availability-time').value;
+  availabilityData.responseTime = document.getElementById('availability-responsetime').value;
+  const token = prompt("GitHub Personal Access Token:");
+  await githubSave(
+    'data/availability.json',
+    JSON.stringify(availabilityData, null, 2),
+    "Update availability.json from admin",
+    token
+  );
+  alert('Availability saved!');
+};
+
 // ---- On Load: Show All ----
 document.addEventListener('DOMContentLoaded', () => {
+  renderAbout();
   renderContact();
   renderEducation();
   renderExperience();
+  renderAvailability();
 });
