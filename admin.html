@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Panel | Dakshith Ullapaneni</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dakshith Admin - Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="admin.css" rel="stylesheet"><!-- your original styles -->
+  <style>
+    body { background:#161524; color: #ffd749; }
+    .navbar { background:#232234; }
+    .card { background:#232234; color:#ffd749; margin-bottom:24px; }
+    .form-control, .form-select { background:#191a23; color:#ffd749; border-color:#ffd749; }
+    .form-control:focus { border-color:#22d685; box-shadow:none; }
+    .btn-primary, .btn-dark { background:#ffd749; color:#232234; border-color:#ffd749; }
+    .btn-primary:hover, .btn-dark:hover { background:#22d685; color:#fff; border-color:#22d685; }
+    .table { background:#232234; color:#ffd749; }
+    .table th, .table td { color:#ffd749; border-color:#3a3952;}
+  </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+  <nav class="navbar navbar-expand-lg mb-4">
     <div class="container">
-      <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="index.html">
+      <a class="navbar-brand fw-semibold text-warning" href="index.html">
         Dakshith Ullapaneni Admin
       </a>
     </div>
@@ -19,7 +29,7 @@
 
     <div class="row gy-4">
 
-      <!-- Contact Info (new section) -->
+      <!-- Contact Info (Editable) -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -29,7 +39,7 @@
         </div>
       </div>
 
-      <!-- Education -->
+      <!-- Education (Editable) -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -39,7 +49,7 @@
         </div>
       </div>
 
-      <!-- Experience (new section) -->
+      <!-- Experience (Editable, always visible) -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -49,7 +59,7 @@
         </div>
       </div>
 
-      <!-- Projects -->
+      <!-- Projects (Editable) -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -59,7 +69,7 @@
         </div>
       </div>
 
-      <!-- Availability -->
+      <!-- Availability (Editable) -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -68,9 +78,28 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
+  <button id="dark-mode-toggle" class="btn btn-dark position-fixed top-0 end-0 m-2" aria-label="Toggle dark mode">🌗</button>
+  <script>
+    // Classic admin dark mode
+    (function(){
+      let on = true;
+      function set(on) {
+        document.body.style.background = on ? "#161524" : "#fff";
+        document.body.style.color = on ? "#ffd749" : "#111";
+        document.querySelectorAll('.card').forEach(card => {
+          card.style.background = on ? "#232234" : "#fff";
+          card.style.color = on ? "#ffd749" : "#111";
+        });
+        document.querySelectorAll('.navbar').forEach(nav => nav.style.background = on ? "#232234" : "#f8f9fa");
+      }
+      set(true);
+      document.getElementById('dark-mode-toggle').onclick = function(){
+        on = !on; set(on);
+      };
+    })();
+  </script>
   <script src="admin.js"></script>
 </body>
 </html>
