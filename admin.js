@@ -1,5 +1,5 @@
 // ---- Setup: CHANGE THESE ----
-const GITHUB_REPO = 'dakshithu/persite'; // Example: 'daki247/portfolio'
+const GITHUB_REPO = 'dakshithu/persite'; // e.g., 'daki247/portfolio'
 const BRANCH = 'main';
 
 // ---- Utility ----
@@ -16,8 +16,6 @@ async function fetchText(url) {
 function b64(str) {
   return btoa(unescape(encodeURIComponent(str)));
 }
-
-// ---- GitHub API save ----
 async function githubSave(path, data, message, token, repo=GITHUB_REPO, branch=BRANCH) {
   const fileUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
   const headers = { Authorization:`token ${token}`, 'Content-Type':'application/json' };
@@ -47,12 +45,7 @@ async function renderAbout() {
 document.getElementById('save-about').onclick = async () => {
   const token = prompt("GitHub Personal Access Token:");
   aboutText = document.getElementById('about-textarea').value;
-  await githubSave(
-    'data/about.txt',
-    aboutText,
-    "Update about.txt from admin",
-    token
-  );
+  await githubSave('data/about.txt', aboutText, "Update about.txt from admin", token);
   alert('About text saved!');
 };
 
@@ -114,14 +107,8 @@ document.getElementById('save-contact').onclick = async () => {
   contactData.phone = document.getElementById('contact-phone').value;
   contactData.linkedin = document.getElementById('contact-linkedin').value;
   contactData.github = document.getElementById('contact-github').value;
-  // Optionally update github username if needed
   const token = prompt("GitHub Personal Access Token:");
-  await githubSave(
-    'data/contact.json',
-    JSON.stringify(contactData, null, 2),
-    "Update contact info from admin",
-    token
-  );
+  await githubSave('data/contact.json', JSON.stringify(contactData, null, 2), "Update contact info from admin", token);
   alert('Contact info saved!');
 };
 
@@ -136,36 +123,34 @@ async function renderEducation() {
     const row = document.createElement('div');
     row.className = 'input-group mb-2';
     row.innerHTML = `
-      <input type="text" class="form-control" value="${item.name}" placeholder="Institute" data-i="${i}" data-k="name">
-      <input type="url" class="form-control" value="${item.url}" placeholder="URL" data-i="${i}" data-k="url">
-      <input type="text" class="form-control" value="${item.details||''}" placeholder="Details" data-i="${i}" data-k="details">
-      <button class="btn btn-danger" type="button" data-rm="${i}">&times;</button>
+      <input type="text" class="form-control" value="${item.name}" placeholder="Institute">
+      <input type="url" class="form-control" value="${item.url}" placeholder="URL">
+      <input type="text" class="form-control" value="${item.details||''}" placeholder="Details">
+      <button class="btn btn-danger" type="button">&times;</button>
     `;
-    row.querySelectorAll('.form-control').forEach(inp => {
-      inp.onchange = e => {
-        educationData[i][inp.getAttribute('data-k')] = inp.value;
-      };
-    });
+    row.querySelectorAll('input')[0].onchange = e => { educationData[i].name = e.target.value; };
+    row.querySelectorAll('input')[1].onchange = e => { educationData[i].url = e.target.value; };
+    row.querySelectorAll('input')[2].onchange = e => { educationData[i].details = e.target.value; };
     row.querySelector('.btn-danger').onclick = () => {
-      educationData.splice(i, 1); renderEducation();
+      educationData.splice(i, 1);
+      renderEducation();
     };
     form.appendChild(row);
   });
+  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
   addBtn.textContent = 'Add Education';
-  addBtn.onclick = () => { educationData.push({ name: '', url: '', details:'' }); renderEducation(); };
+  addBtn.onclick = () => {
+    educationData.push({ name: '', url: '', details:'' });
+    renderEducation();
+  };
   form.appendChild(addBtn);
 }
 document.getElementById('save-education').onclick = async () => {
   const token = prompt("GitHub Personal Access Token:");
-  await githubSave(
-    'data/education.json',
-    JSON.stringify(educationData, null, 2),
-    "Update education.json from admin",
-    token
-  );
+  await githubSave('data/education.json', JSON.stringify(educationData, null, 2), "Update education.json from admin", token);
   alert('Education saved!');
 };
 
@@ -180,35 +165,32 @@ async function renderExperience() {
     const row = document.createElement('div');
     row.className = 'input-group mb-2';
     row.innerHTML = `
-      <input type="text" class="form-control" value="${item.dates}" placeholder="Dates" data-i="${i}" data-k="dates">
-      <input type="text" class="form-control" value="${item.role}" placeholder="Role" data-i="${i}" data-k="role">
-      <button class="btn btn-danger" type="button" data-rm="${i}">&times;</button>
+      <input type="text" class="form-control" value="${item.dates}" placeholder="Dates">
+      <input type="text" class="form-control" value="${item.role}" placeholder="Role">
+      <button class="btn btn-danger" type="button">&times;</button>
     `;
-    row.querySelectorAll('.form-control').forEach(inp => {
-      inp.onchange = e => {
-        experienceData[i][inp.getAttribute('data-k')] = inp.value;
-      };
-    });
+    row.querySelectorAll('input')[0].onchange = e => { experienceData[i].dates = e.target.value; };
+    row.querySelectorAll('input')[1].onchange = e => { experienceData[i].role = e.target.value; };
     row.querySelector('.btn-danger').onclick = () => {
-      experienceData.splice(i, 1); renderExperience();
+      experienceData.splice(i, 1);
+      renderExperience();
     };
     form.appendChild(row);
   });
+  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
   addBtn.textContent = 'Add Experience';
-  addBtn.onclick = () => { experienceData.push({ dates: '', role:'' }); renderExperience(); };
+  addBtn.onclick = () => {
+    experienceData.push({ dates: '', role: '' });
+    renderExperience();
+  };
   form.appendChild(addBtn);
 }
 document.getElementById('save-experience').onclick = async () => {
   const token = prompt("GitHub Personal Access Token:");
-  await githubSave(
-    'data/experience.json',
-    JSON.stringify(experienceData, null, 2),
-    "Update experience.json from admin",
-    token
-  );
+  await githubSave('data/experience.json', JSON.stringify(experienceData, null, 2), "Update experience.json from admin", token);
   alert('Experience saved!');
 };
 
@@ -225,12 +207,7 @@ document.getElementById('save-availability').onclick = async () => {
   availabilityData.time = document.getElementById('availability-time').value;
   availabilityData.responseTime = document.getElementById('availability-responsetime').value;
   const token = prompt("GitHub Personal Access Token:");
-  await githubSave(
-    'data/availability.json',
-    JSON.stringify(availabilityData, null, 2),
-    "Update availability.json from admin",
-    token
-  );
+  await githubSave('data/availability.json', JSON.stringify(availabilityData, null, 2), "Update availability.json from admin", token);
   alert('Availability saved!');
 };
 
