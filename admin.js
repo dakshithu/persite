@@ -1,11 +1,10 @@
-// ---- Setup: CHANGE THESE ----
-const GITHUB_REPO = 'dakshithu/persite'; // e.g., 'daki247/portfolio'
+const GITHUB_REPO = 'dakshithu/persite';
 const BRANCH = 'main';
 
-// ---- Utility ----
+// --- Utility ---
 async function fetchJSON(url) {
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
+  if (!res.ok) throw new Error(`Failed to load ${url} (${res.status})`);
   return await res.json();
 }
 async function fetchText(url) {
@@ -36,8 +35,14 @@ async function githubSave(path, data, message, token, repo=GITHUB_REPO, branch=B
   return await putResp.json();
 }
 
-// ---- About ----
+// -------- State --------
 let aboutText = '';
+let contactData = {};
+let experienceData = [];
+let educationData = [];
+let availabilityData = {};
+
+// ---- About ----
 async function renderAbout() {
   aboutText = await fetchText('data/about.txt');
   document.getElementById('about-textarea').value = aboutText;
@@ -50,7 +55,6 @@ document.getElementById('save-about').onclick = async () => {
 };
 
 // ---- Contact Info ----
-let contactData;
 async function renderContact() {
   contactData = await fetchJSON('data/contact.json');
   const form = document.getElementById('admin-contact');
@@ -113,9 +117,11 @@ document.getElementById('save-contact').onclick = async () => {
 };
 
 // ---- Education ----
-let educationData;
-async function renderEducation() {
+async function loadEducation() {
   educationData = await fetchJSON('data/education.json');
+  renderEducation();
+}
+function renderEducation() {
   const form = document.getElementById('admin-education');
   if (!form) return;
   form.innerHTML = '';
@@ -137,13 +143,12 @@ async function renderEducation() {
     };
     form.appendChild(row);
   });
-  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
   addBtn.textContent = 'Add Education';
   addBtn.onclick = () => {
-    educationData.push({ name: '', url: '', details:'' });
+    educationData.push({ name: '', url: '', details: '' });
     renderEducation();
   };
   form.appendChild(addBtn);
@@ -155,9 +160,11 @@ document.getElementById('save-education').onclick = async () => {
 };
 
 // ---- Experience ----
-let experienceData;
-async function renderExperience() {
+async function loadExperience() {
   experienceData = await fetchJSON('data/experience.json');
+  renderExperience();
+}
+function renderExperience() {
   const form = document.getElementById('admin-experience');
   if (!form) return;
   form.innerHTML = '';
@@ -177,7 +184,6 @@ async function renderExperience() {
     };
     form.appendChild(row);
   });
-  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn btn-success btn-sm mt-2';
   addBtn.type = 'button';
@@ -195,7 +201,6 @@ document.getElementById('save-experience').onclick = async () => {
 };
 
 // ---- Availability ----
-let availabilityData;
 async function renderAvailability() {
   availabilityData = await fetchJSON('data/availability.json');
   document.getElementById('availability-status').value = !!availabilityData.available ? "true" : "false";
@@ -215,7 +220,7 @@ document.getElementById('save-availability').onclick = async () => {
 document.addEventListener('DOMContentLoaded', () => {
   renderAbout();
   renderContact();
-  renderEducation();
-  renderExperience();
+  loadEducation();
+  loadExperience();
   renderAvailability();
 });
