@@ -36,7 +36,11 @@
     "url": "https://studio.code.org/projects/applab/7ucAmmsG9BeT00Iek-TmoZrwcAa4euABq1mC29908Mw"
   },
   {
-    "title": "Qwen Assistant",
+    "title": "Qwen Assistant (Not Running)",
     "url": "https://assist.dakshcloudron.run.place:5000"
+  },
+  {
+    "title": "Vestiga",
+    "url": "https://vestiga.netlify.app"
   }
 ]
