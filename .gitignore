@@ -1,0 +1,18 @@
+# Environment variables & GitHub API credentials
+.env
+.env.local
+.env.*
+*.key
+github_token*
+GITHUB_TOKEN*
+config.js
+secrets.json
+
+# Local runtime & dependencies
+node_modules/
+.DS_Store
+Thumbs.db
+serve.js
+
+# Local dev / IDE config
+.claude/

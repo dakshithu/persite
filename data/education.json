@@ -2,26 +2,31 @@
   {
     "name": "ASPAM IIS",
     "url": "https://aspamiis.com/",
-    "details": "Expected 2031"
+    "details": "Expected 2031",
+    "description": "Pursuing academic curriculum while advancing independent computer science fundamentals and logic."
   },
   {
     "name": "Zero to Mastery",
     "url": "https://zerotomastery.io/",
-    "details": null
+    "details": "Certified",
+    "description": "Completed comprehensive programs covering modern JavaScript patterns, API integration, and fullstack mechanics."
   },
   {
     "name": "The App Brewery",
     "url": "https://appbrewery.com",
-    "details": null
+    "details": "Certified",
+    "description": "Explored full application architecture, frontend-backend binding, and deployment lifecycle."
   },
   {
     "name": "Byjus Future School (Formerly WhiteHatJr)",
     "url": "",
-    "details": ""
+    "details": "Foundational",
+    "description": "Initial structured training in computational thinking, procedural logic, and game development."
   },
   {
     "name": "BrightCHAMPS",
     "url": "https://brightchamps.com",
-    "details": ""
+    "details": "Foundational",
+    "description": "Early logic design and algorithmic foundations."
   }
 ]
