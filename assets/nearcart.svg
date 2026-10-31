@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 88" role="img" aria-labelledby="title">
+  <title id="title">NearCart</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 13h10l9 42h38l11-31H25" stroke="#15243B" stroke-width="5" />
+    <path d="M31 34h23" stroke="#2F63D8" stroke-width="4" />
+    <circle cx="36" cy="66" r="4" fill="#15243B" stroke="#15243B" stroke-width="2" />
+    <circle cx="59" cy="66" r="4" fill="#15243B" stroke="#15243B" stroke-width="2" />
+    <circle cx="53" cy="37" r="11" fill="#F4F7FC" stroke="#2F63D8" stroke-width="4" />
+    <path d="m61 45 8 8" stroke="#2F63D8" stroke-width="4" />
+  </g>
+  <text x="91" y="62" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" letter-spacing="-3">
+    <tspan fill="#15243B">Near</tspan><tspan fill="#2F63D8">Cart</tspan>
+  </text>
+</svg>

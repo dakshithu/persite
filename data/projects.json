@@ -46,5 +46,10 @@
   {
     "title": "The 7 Emirates",
     "url": "https://emirate-atlas.vercel.app"
+  },
+  {
+    "title": "CrossChat",
+    "url": "https://github.com/dakshithu/crosschat",
+    "description": "A bridge between Discord channels and Zoom chat."
   }
 ]
