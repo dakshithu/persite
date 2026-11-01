@@ -14,10 +14,31 @@ function el(tag, text, className) {
   if (className) node.className = className;
   return node;
 }
-async function readData(name) {
-  const response = await fetch(`data/${name}.json`);
-  if (!response.ok) throw new Error("Data unavailable");
-  return response.json();
+const githubDataRoot =
+  "https://raw.githubusercontent.com/dakshithu/persite/main/data";
+const isLocalPreview = ["localhost", "127.0.0.1"].includes(
+  window.location.hostname,
+);
+async function readDataFile(filename, parser) {
+  const localSource = `data/${filename}`;
+  const githubSource = `${githubDataRoot}/${filename}`;
+  const sources = isLocalPreview
+    ? [localSource, githubSource]
+    : [githubSource, localSource];
+  for (const source of sources) {
+    try {
+      const response = await fetch(source, { cache: "no-store" });
+      if (!response.ok) continue;
+      return await parser(response);
+    } catch {}
+  }
+  throw new Error(`${filename} unavailable`);
+}
+function readData(name) {
+  return readDataFile(`${name}.json`, (response) => response.json());
+}
+function readTextData(name) {
+  return readDataFile(`${name}.txt`, (response) => response.text());
 }
 const theme = $("#theme");
 try {
@@ -103,33 +124,19 @@ if (awardStack) {
   renderAwardStack();
 }
 
-const categories = {
-  Vestiga: "WEB APPLICATION",
-  Chess: "BROWSER GAME",
-  "Games App": "ARCADE / PUZZLES",
-  "To-do List": "PRODUCTIVITY",
-  DigiClock: "WEB UTILITY",
-  SimpleCalculator: "WEB UTILITY",
-  "Sustainable Living Info": "INFORMATION",
-  "MealMate (Android App)": "ANDROID",
-  "Pre KG Learning": "EDUCATION",
-  "Brain Wizard": "LEARNING GAME",
-};
 if ($("#project-list"))
   readData("projects")
     .then((projects) => {
       if (!Array.isArray(projects)) throw new Error("Invalid projects");
       const list = $("#project-list");
       list.replaceChildren();
-      const ordered = [...projects].sort((a, b) =>
-        a.title === "Vestiga" ? -1 : b.title === "Vestiga" ? 1 : 0,
-      );
       $("#project-count").textContent =
-        `${String(ordered.length).padStart(2, "0")} PROJECTS`;
-      if (!ordered.length)
+        `${String(projects.length).padStart(2, "0")} PROJECTS`;
+      if (!projects.length)
         list.append(el("p", "New projects will appear here."));
-      ordered.forEach((project, index) => {
-        const inactive = /not running/i.test(project.title);
+      projects.forEach((project, index) => {
+        const inactive =
+          project.status === "offline" || /not running/i.test(project.title);
         const url = safeURL(project.url);
         const row = el(url && !inactive ? "a" : "div", "", "project-row");
         if (url && !inactive) {
@@ -137,12 +144,17 @@ if ($("#project-list"))
           row.target = "_blank";
           row.rel = "noopener noreferrer";
         }
+        const copy = el("span", "", "project-copy");
+        copy.append(el("h3", project.title));
+        if (project.description) {
+          copy.append(el("span", project.description, "project-description"));
+        }
         row.append(
           el("span", String(index + 1).padStart(2, "0"), "number mono"),
-          el("h3", project.title),
+          copy,
           el(
             "span",
-            inactive ? "OFFLINE" : categories[project.title] || "EXPERIMENT",
+            inactive ? "OFFLINE" : project.category || "PROJECT",
             "category mono",
           ),
           el("span", inactive ? "—" : "↗"),
@@ -202,7 +214,7 @@ readData("availability")
     if ($("#availability"))
       $("#availability").textContent = "Get in touch for availability";
   });
-let email = "hello@dakshithu.de5.net";
+let email = "udakshith94@gmail.com";
 readData("contact")
   .then((data) => {
     if (
@@ -221,6 +233,11 @@ readData("contact")
           .querySelectorAll(`[data-${type}]`)
           .forEach((link) => (link.href = url));
     }
+    document.querySelectorAll("[data-phone]").forEach((link) => {
+      if (!data.phone) return;
+      link.href = `tel:${data.phone.replace(/[^+\d]/g, "")}`;
+      link.textContent = data.phone;
+    });
   })
   .catch(() => {});
 if ($("#contactForm"))
@@ -240,11 +257,7 @@ if ($("#contactForm"))
   });
 
 if ($("#about-text"))
-  fetch("data/about.txt")
-    .then((response) => {
-      if (!response.ok) throw new Error("About unavailable");
-      return response.text();
-    })
+  readTextData("about")
     .then((text) => {
       if (text.trim()) $("#about-text").textContent = text.trim();
     })

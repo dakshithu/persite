@@ -383,6 +383,16 @@ h2 {
   font-weight: 500;
   letter-spacing: -0.4px;
 }
+.project-copy {
+  display: grid;
+  gap: 3px;
+}
+.project-description {
+  max-width: 54ch;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
 .project-row:last-child {
   border-bottom: 1px solid var(--line);
 }
@@ -490,6 +500,13 @@ h2 {
   font-size: clamp(15px, 2vw, 23px);
   margin: 24px 0 8px;
   letter-spacing: -0.5px;
+}
+.contact-phone {
+  display: block;
+  width: fit-content;
+  margin: -2px 0 18px;
+  color: var(--muted);
+  font-size: 10px;
 }
 .contact #availability-details {
   font-size: 10px;
