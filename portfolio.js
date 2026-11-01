@@ -56,6 +56,53 @@ function tick() {
 tick();
 setInterval(tick, 60000);
 if ($("#year")) $("#year").textContent = new Date().getFullYear();
+
+const awardStack = $("#awardStack");
+if (awardStack) {
+  const awardPhotos = [...awardStack.querySelectorAll(".instant-photo")];
+  const awardButtons = [...document.querySelectorAll("[data-deck-direction]")];
+  const awardPosition = $("#awardPosition");
+  const awardAnnouncement = $("#awardAnnouncement");
+  let awardOrder = [...awardPhotos];
+  let awardMoving = false;
+
+  const renderAwardStack = () => {
+    awardOrder.forEach((photo, index) => {
+      photo.dataset.deckPosition = String(index);
+      photo.setAttribute("aria-hidden", index === 0 ? "false" : "true");
+    });
+    if (awardPosition) {
+      awardPosition.textContent = String(awardPhotos.indexOf(awardOrder[0]) + 1);
+    }
+  };
+
+  const cycleAward = (direction) => {
+    if (awardMoving) return;
+    awardMoving = true;
+    awardButtons.forEach((button) => (button.disabled = true));
+    const topPhoto = awardOrder[0];
+    topPhoto.classList.add(`is-exiting-${direction}`);
+
+    window.setTimeout(() => {
+      awardOrder = [...awardOrder.slice(1), topPhoto];
+      topPhoto.classList.remove(`is-exiting-${direction}`);
+      renderAwardStack();
+      if (awardAnnouncement) {
+        awardAnnouncement.textContent = `Showing ${awardOrder[0].dataset.award}`;
+      }
+      window.setTimeout(() => {
+        awardMoving = false;
+        awardButtons.forEach((button) => (button.disabled = false));
+      }, 520);
+    }, 260);
+  };
+
+  awardButtons.forEach((button) => {
+    button.addEventListener("click", () => cycleAward(button.dataset.deckDirection));
+  });
+  renderAwardStack();
+}
+
 const categories = {
   Vestiga: "WEB APPLICATION",
   Chess: "BROWSER GAME",

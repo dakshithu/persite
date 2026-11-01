@@ -57,10 +57,31 @@
               >Explore the work <span aria-hidden="true">↘</span></a
             >
           </div>
-          <div class="hero-awards" aria-label="Awards and school recognition">
-            <figure class="hero-award hope"><img src="assets/awards-together.jpg" alt="Award recipients holding trophies and certificates at HOPE ’25" width="716" height="1600" fetchpriority="high"><figcaption><strong>HOPE ’25</strong><span class="mono">1ST PLACE WINNER</span></figcaption></figure>
-            <figure class="hero-award badge"><img src="assets/school-ceremony.jpg" alt="Receiving the Cyber Safety Ambassador badge at school" width="960" height="1280"><figcaption><strong>Cyber Safety Ambassador</strong><span class="mono">SCHOOL APPOINTMENT</span></figcaption></figure>
-            <figure class="hero-award immuto"><img src="assets/award-ceremony.jpg" alt="Receiving a trophy at Inter Immuto Tech Fest, with Award Ceremony on the backdrop" width="1600" height="1200"><figcaption><strong>Inter Immuto Tech Fest</strong><span class="mono">1ST PLACE WINNER</span></figcaption></figure>
+          <div class="award-deck" aria-label="Awards and school recognition">
+            <div class="instant-stack" id="awardStack" aria-live="polite">
+              <figure class="instant-photo" data-award="HOPE ’25 — 1st place winner">
+                <img src="assets/awards-together.jpg" alt="Award recipients holding trophies and certificates at HOPE ’25" width="716" height="1600" fetchpriority="high">
+                <figcaption><strong>HOPE ’25</strong><span class="mono">1ST PLACE WINNER</span></figcaption>
+              </figure>
+              <figure class="instant-photo" data-award="Cyber Safety Ambassador — school appointment">
+                <img src="assets/school-ceremony.jpg" alt="Receiving the Cyber Safety Ambassador badge at school" width="960" height="1280">
+                <figcaption><strong>Cyber Safety Ambassador</strong><span class="mono">SCHOOL APPOINTMENT</span></figcaption>
+              </figure>
+              <figure class="instant-photo" data-award="Inter Immuto Tech Fest — 1st place winner">
+                <img src="assets/award-ceremony.jpg" alt="Receiving a trophy at Inter Immuto Tech Fest, with Award Ceremony on the backdrop" width="1600" height="1200">
+                <figcaption><strong>Inter Immuto Tech Fest</strong><span class="mono">1ST PLACE WINNER</span></figcaption>
+              </figure>
+            </div>
+            <div class="award-deck-controls">
+              <button class="deck-button" type="button" data-deck-direction="left" aria-label="Move the top award photo left">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <span class="mono"><span id="awardPosition">1</span> / 3</span>
+              <button class="deck-button" type="button" data-deck-direction="right" aria-label="Move the top award photo right">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+            <p class="sr-only" id="awardAnnouncement"></p>
           </div>
         </div>
         <div class="hero-bottom">
