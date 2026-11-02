@@ -103,6 +103,7 @@ if (awardStack) {
     if (awardMoving) return;
     awardMoving = true;
     awardButtons.forEach((button) => (button.disabled = true));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const topPhoto = awardOrder[0];
     topPhoto.classList.add(`is-exiting-${direction}`);
 
@@ -116,8 +117,8 @@ if (awardStack) {
       window.setTimeout(() => {
         awardMoving = false;
         awardButtons.forEach((button) => (button.disabled = false));
-      }, 520);
-    }, 260);
+      }, reducedMotion ? 0 : 520);
+    }, reducedMotion ? 0 : 260);
   };
 
   awardButtons.forEach((button) => {

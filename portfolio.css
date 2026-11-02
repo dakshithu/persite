@@ -162,6 +162,10 @@ em {
   font-size: 13px;
   font-weight: 500;
 }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+.primary-link { color: var(--accent); font-weight: 700; }
+.service-jump { display: inline-block; margin-top: 24px; color: var(--muted); font-size: 9px; }
+.skills .service-label { font-size: 10px; letter-spacing: .055em; margin-bottom: 20px; color: var(--accent); }
 .text-link span {
   font-size: 22px;
   transition: transform 0.3s;
