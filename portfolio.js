@@ -42,8 +42,10 @@ function readTextData(name) {
 }
 const theme = $("#theme");
 try {
-  if (localStorage.getItem("dakshith_theme") === "dark")
-    document.documentElement.dataset.theme = "dark";
+  const savedTheme = localStorage.getItem("dakshith_theme");
+  if (savedTheme === "dark" || savedTheme === "light") {
+    document.documentElement.dataset.theme = savedTheme;
+  }
 } catch {}
 function syncTheme() {
   const dark = document.documentElement.dataset.theme === "dark";
