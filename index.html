@@ -192,14 +192,19 @@
           </div>
         </article>
         <div class="project-index">
-          <div class="index-head mono">
-            <span>THE PROJECT INDEX</span><span id="project-count"></span>
+          <div class="index-head project-index-head mono">
+            <span>RANKED PROJECTS / SWIPE TO EXPLORE</span><span id="project-count"></span>
           </div>
-          <div id="project-list" aria-live="polite">
+          <div class="project-carousel-shell">
+            <button class="carousel-control carousel-prev" type="button" id="projectPrev" aria-label="Show previous project"><span aria-hidden="true">←</span></button>
+            <div id="project-list" class="project-carousel" aria-live="polite" tabindex="0">
             <div class="skeleton"></div>
             <div class="skeleton"></div>
             <span class="mono">Loading projects…</span>
+            </div>
+            <button class="carousel-control carousel-next" type="button" id="projectNext" aria-label="Show next project"><span aria-hidden="true">→</span></button>
           </div>
+          <div class="carousel-footer mono"><span id="project-rank">01 / 15</span><span>DRAG OR SWIPE <span aria-hidden="true">↔</span></span></div>
         </div>
       </section>
       <section id="about" class="about section">

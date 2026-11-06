@@ -142,6 +142,8 @@ if ($("#project-list"))
           project.status === "offline" || /not running/i.test(project.title);
         const url = safeURL(project.url);
         const row = el(url && !inactive ? "a" : "div", "", "project-row");
+        const rank = project.rank || index + 1;
+        row.setAttribute("aria-label", `Rank ${rank}: ${project.title}`);
         if (url && !inactive) {
           row.href = url;
           row.target = "_blank";
@@ -153,7 +155,7 @@ if ($("#project-list"))
           copy.append(el("span", project.description, "project-description"));
         }
         row.append(
-          el("span", String(index + 1).padStart(2, "0"), "number mono"),
+          el("span", String(rank).padStart(2, "0"), "number mono"),
           copy,
           el(
             "span",
@@ -164,6 +166,50 @@ if ($("#project-list"))
         );
         list.append(row);
       });
+      const prev = $("#projectPrev");
+      const next = $("#projectNext");
+      const rankLabel = $("#project-rank");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const cards = () => [...list.querySelectorAll(".project-row")];
+      const cardStep = () => {
+        const card = cards()[0];
+        if (!card) return list.clientWidth;
+        const styles = getComputedStyle(list);
+        return card.getBoundingClientRect().width + parseFloat(styles.columnGap || styles.gap || "0");
+      };
+      const updateRank = () => {
+        const step = cardStep();
+        const index = Math.max(0, Math.min(projects.length - 1, Math.round(list.scrollLeft / step)));
+        if (rankLabel) rankLabel.textContent = `${String(index + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
+      };
+      const move = (direction) => list.scrollBy({ left: direction * cardStep(), behavior: reduced ? "auto" : "smooth" });
+      prev?.addEventListener("click", () => move(-1));
+      next?.addEventListener("click", () => move(1));
+      list.addEventListener("scroll", updateRank, { passive: true });
+      list.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          move(event.key === "ArrowRight" ? 1 : -1);
+        }
+      });
+      let pointerStart = null;
+      list.addEventListener("pointerdown", (event) => {
+        pointerStart = event.clientX;
+        list.setPointerCapture?.(event.pointerId);
+        list.classList.add("is-dragging");
+      });
+      list.addEventListener("pointerup", (event) => {
+        if (pointerStart === null) return;
+        const delta = pointerStart - event.clientX;
+        if (Math.abs(delta) > 36) move(delta > 0 ? 1 : -1);
+        pointerStart = null;
+        list.classList.remove("is-dragging");
+      });
+      list.addEventListener("pointercancel", () => {
+        pointerStart = null;
+        list.classList.remove("is-dragging");
+      });
+      updateRank();
     })
     .catch(() => {
       $("#project-list").replaceChildren(

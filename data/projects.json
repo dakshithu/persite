@@ -1,55 +1,17 @@
 [
-  {
-    "title": "DigiClock",
-    "url": "https://dakshdigiclock.netlify.app/"
-  },
-  {
-    "title": "SimpleCalculator",
-    "url": "https://dakshcalc.netlify.app/"
-  },
-  {
-    "title": "Sustainable Living Info",
-    "url": "https://susliving.netlify.app/"
-  },
-  {
-    "title": "To-do List",
-    "url": "https://dakshtodo.netlify.app/"
-  },
-  {
-    "title": "Games App",
-    "url": "https://dakigames.netlify.app/"
-  },
-  {
-    "title": "MealMate (Android App)",
-    "url": "https://x.thunkable.com/projectPage/6867b2cdd98affe373b85997"
-  },
-  {
-    "title": "Chess",
-    "url": "https://chessdaksh.netlify.app"
-  },
-  {
-    "title": "Pre KG Learning",
-    "url": "https://studio.code.org/projects/applab/wGpenPoOAYBHqxJtPGvZHn_Hhhw2JGmikgNtrM657kM"
-  },
-  {
-    "title": "Brain Wizard",
-    "url": "https://studio.code.org/projects/applab/7ucAmmsG9BeT00Iek-TmoZrwcAa4euABq1mC29908Mw"
-  },
-  {
-    "title": "Qwen Assistant (Not Running)",
-    "url": "https://assist.dakshcloudron.run.place:5000"
-  },
-  {
-    "title": "Vestiga",
-    "url": "https://vestiga.netlify.app"
-  },
-  {
-    "title": "The 7 Emirates",
-    "url": "https://emirate-atlas.vercel.app"
-  },
-  {
-    "title": "CrossChat",
-    "url": "https://github.com/dakshithu/crosschat",
-    "description": "A bridge between Discord channels and Zoom chat."
-  }
+  { "rank": 1, "title": "Little Koi Club", "url": "https://little-koi-club.vercel.app/", "category": "CREATIVE WEB" },
+  { "rank": 2, "title": "The 7 Emirates", "url": "https://emirate-atlas.vercel.app", "category": "EDITORIAL WEB" },
+  { "rank": 3, "title": "NearCart", "url": "https://nearcart-fawn.vercel.app/", "category": "PRODUCT / WEB" },
+  { "rank": 4, "title": "Vestiga", "url": "https://vestiga.netlify.app", "category": "WEB APPLICATION" },
+  { "rank": 5, "title": "Chess", "url": "https://chessdaksh.netlify.app", "category": "BROWSER GAME" },
+  { "rank": 6, "title": "Games App", "url": "https://dakigames.netlify.app/", "category": "ARCADE / PUZZLES" },
+  { "rank": 7, "title": "Sustainable Living Info", "url": "https://susliving.netlify.app/", "category": "INFORMATION" },
+  { "rank": 8, "title": "MealMate (Android App)", "url": "https://x.thunkable.com/projectPage/6867b2cdd98affe373b85997", "category": "ANDROID" },
+  { "rank": 9, "title": "Brain Wizard", "url": "https://studio.code.org/projects/applab/7ucAmmsG9BeT00Iek-TmoZrwcAa4euABq1mC29908Mw", "category": "LEARNING GAME" },
+  { "rank": 10, "title": "Pre KG Learning", "url": "https://studio.code.org/projects/applab/wGpenPoOAYBHqxJtPGvZHn_Hhhw2JGmikgNtrM657kM", "category": "EDUCATION" },
+  { "rank": 11, "title": "DigiClock", "url": "https://dakshdigiclock.netlify.app/", "category": "WEB UTILITY" },
+  { "rank": 12, "title": "To-do List", "url": "https://dakshtodo.netlify.app/", "category": "PRODUCTIVITY" },
+  { "rank": 13, "title": "SimpleCalculator", "url": "https://dakshcalc.netlify.app/", "category": "WEB UTILITY" },
+  { "rank": 14, "title": "Qwen Assistant (Not Running)", "url": "https://assist.dakshcloudron.run.place:5000", "category": "OFFLINE", "status": "offline" },
+  { "rank": 15, "title": "CrossChat", "url": "https://github.com/dakshithu/crosschat", "category": "INTEGRATION", "description": "A bridge between Discord channels and Zoom chat." }
 ]
