@@ -1,7 +1,7 @@
 [
   { "rank": 1, "title": "Little Koi Club", "url": "https://little-koi-club.vercel.app/", "category": "CREATIVE WEB" },
-  { "rank": 2, "title": "The 7 Emirates", "url": "https://emirate-atlas.vercel.app", "category": "EDITORIAL WEB" },
-  { "rank": 3, "title": "NearCart", "url": "https://nearcart-fawn.vercel.app/", "category": "PRODUCT / WEB" },
+  { "rank": 2, "title": "NearCart", "url": "https://nearcart-fawn.vercel.app/", "category": "PRODUCT / WEB" },
+  { "rank": 3, "title": "The 7 Emirates", "url": "https://emirate-atlas.vercel.app", "category": "EDITORIAL WEB" },
   { "rank": 4, "title": "Vestiga", "url": "https://vestiga.netlify.app", "category": "WEB APPLICATION" },
   { "rank": 5, "title": "Chess", "url": "https://chessdaksh.netlify.app", "category": "BROWSER GAME" },
   { "rank": 6, "title": "Games App", "url": "https://dakigames.netlify.app/", "category": "ARCADE / PUZZLES" },
